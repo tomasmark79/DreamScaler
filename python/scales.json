@@ -1,0 +1,392 @@
+[
+    {
+        "name" : "Durová",
+        "category" : "Běžné",
+        "feelings" : "jasný, veselý, nadějný, triumfální",
+        "genre" : "pop, folk, klasická hudba",
+        "usage" : "většina popových hitů, tradiční písně a hymny",
+        "intervals" : [
+            2,2,1,2,2,2,1
+        ]
+    },
+    {
+        "name" : "Aiolská (Přirozená molová)",
+        "category" : "Běžné",
+        "feelings" : "melancholický, smutný, introspektivní, tmavý",
+        "genre" : "alternativní rock, folk",
+        "usage" : "balady, indie folk skladby a melancholické soundtracky",
+        "intervals" : [
+            2,1,2,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Harmonická molová",
+        "category" : "Běžné",
+        "feelings" : "exotický, tmavý, tajemný, vášnivý",
+        "genre" : "metal, vážná hudba",
+        "usage" : "barokní skladby, neoklasický metal a orientální motivy",
+        "intervals" : [
+            2,1,2,2,1,3,1
+        ]
+    },
+    {
+        "name" : "Melodická molová",
+        "category" : "Běžné",
+        "feelings" : "melancholický, introspektivní, elegantní, dramatický",
+        "genre" : "jazz, filmová hudba",
+        "usage" : "moderní jazzové improvizace, dramatické filmové motivy",
+        "intervals" : [
+            2,1,2,2,2,2,1
+        ]
+    },
+    {
+        "name" : "Harmonická durová",
+        "category" : "Běžné",
+        "feelings" : "neobvyklý, exotický, jazzový, sofistikovaný",
+        "genre" : "jazz, klasická hudba",
+        "usage" : "jazzové harmonické progresy, klasické kompozice",
+        "intervals" : [
+            2,2,1,2,1,3,1
+        ]
+    },
+    {
+        "name" : "Durová pentatonika",
+        "category" : "Běžné",
+        "feelings" : "teplý, otevřený, klidný, jednoduchý",
+        "genre" : "country, gospel",
+        "usage" : "country kytarové sóla, tradiční lidové melodie",
+        "intervals" : [
+            2,2,3,2,3
+        ]
+    },
+    {
+        "name" : "Molová pentatonika",
+        "category" : "Běžné",
+        "feelings" : "duševní, bluesový, introspektivní, cool",
+        "genre" : "rock, blues",
+        "usage" : "rocková kytarová sóla, bluesové riffy",
+        "intervals" : [
+            3,2,2,3,2
+        ]
+    },
+    {
+        "name" : "Egyptská pentatonika",
+        "category" : "Běžné",
+        "feelings" : "mystický, exotický, starobylý, orientální",
+        "genre" : "world music, ambient",
+        "usage" : "etnická hudba, orientální motivy, meditativní skladby",
+        "intervals" : [
+            2,3,2,3,2
+        ]
+    },
+    {
+        "name" : "Molový blues",
+        "category" : "Blues",
+        "feelings" : "duševní, surový, emotivní, hrubý",
+        "genre" : "blues, rock",
+        "usage" : "tradiční bluesové progresy, rocková sóla inspirovaná blues",
+        "intervals" : [
+            3,2,1,1,3,2
+        ]
+    },
+    {
+        "name" : "Durový blues",
+        "category" : "Blues",
+        "feelings" : "povznášející, bluesový, radostný, funky",
+        "genre" : "swing, soul",
+        "usage" : "swingové linky, soulové vokální melodie",
+        "intervals" : [
+            2,1,1,3,2,3
+        ]
+    },
+    {
+        "name" : "Kansas City blues",
+        "category" : "Blues",
+        "feelings" : "energický, hnací, duševní, silný",
+        "genre" : "jump blues, big band",
+        "usage" : "Kansas City jazz a upbeat bluesové shuffle patterny",
+        "intervals" : [
+            2,3,2,1,4
+        ]
+    },
+    {
+        "name" : "Dórská",
+        "category" : "Modal",
+        "feelings" : "hladký, sofistikovaný, funky, modální",
+        "genre" : "funk, fusion",
+        "usage" : "funkové groove jamy, jazz fusion sóla",
+        "intervals" : [
+            2,1,2,2,2,1,2
+        ]
+    },
+    {
+        "name" : "Frygická",
+        "category" : "Modal",
+        "feelings" : "exotický, tmavý, španělský, tajemný",
+        "genre" : "flamenco, progressive metal",
+        "usage" : "španělská kytarová sólo, metalové riffy se španělskou náladou",
+        "intervals" : [
+            1,2,2,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Lydická",
+        "category" : "Modal",
+        "feelings" : "jasný, éterický, snový, rozmarný",
+        "genre" : "filmové soundtracky, dream pop",
+        "usage" : "filmové témata s pocitem naděje, ambientní dream pop melodie",
+        "intervals" : [
+            2,2,2,1,2,2,1
+        ]
+    },
+    {
+        "name" : "Mixolydická",
+        "category" : "Modal",
+        "feelings" : "dominantní, groovy, bluesový, rockový",
+        "genre" : "rock, funk",
+        "usage" : "dominantní akordy v rock'n'rollu, funkové jamy a jam bandy",
+        "intervals" : [
+            2,2,1,2,2,1,2
+        ]
+    },
+    {
+        "name" : "Lokrická",
+        "category" : "Modal",
+        "feelings" : "hrozivý, tmavý, napjatý, nestabilní",
+        "genre" : "avantgarda, progresivní hudba",
+        "usage" : "experimentální skladby, efekty v progresivním metalu",
+        "intervals" : [
+            1,2,2,1,2,2,2
+        ]
+    },
+    {
+        "name" : "Lydická dominantní",
+        "category" : "Modal",
+        "feelings" : "exotický, jasný, překvapivý, funky",
+        "genre" : "fusion, moderní jazz",
+        "usage" : "dominantní akordy v jazz fusion, funky improvizace",
+        "intervals" : [
+            2,2,2,1,2,1,2
+        ]
+    },
+    {
+        "name" : "Frygická dominantní",
+        "category" : "Modal",
+        "feelings" : "orientální, dramatický, napjatý, temný",
+        "genre" : "metal, flamenco, orientální hudba",
+        "usage" : "metalové riffy, španělské flamenco, blízkovýchodní melodie",
+        "intervals" : [
+            1,3,1,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Mixolydická b6",
+        "category" : "Modal",
+        "feelings" : "bluesový, napjatý, jazzový, temný",
+        "genre" : "jazz, blues rock",
+        "usage" : "jazzové improvizace, dominantní akordy s alteracemi",
+        "intervals" : [
+            2,2,1,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Dórská b2",
+        "category" : "Modal",
+        "feelings" : "orientální, tajemný, exotický, sofistikovaný",
+        "genre" : "jazz fusion, world music",
+        "usage" : "fusion improvizace, etnické motivy",
+        "intervals" : [
+            1,2,2,2,2,1,2
+        ]
+    },
+    {
+        "name" : "Bebop dominantní",
+        "category" : "Jazzové",
+        "feelings" : "swingový, melodický, plynulý, jazzový",
+        "genre" : "bebop, swing",
+        "usage" : "jazzové improvizace přes dominantní akordy, bebop linky",
+        "intervals" : [
+            2,2,1,2,2,1,1,1
+        ]
+    },
+    {
+        "name" : "Bebop durová",
+        "category" : "Jazzové",
+        "feelings" : "živý, swingový, melodický, sofistikovaný",
+        "genre" : "bebop, mainstream jazz",
+        "usage" : "improvizace přes durové akordy, rychlé jazzové pasáže",
+        "intervals" : [
+            2,2,1,2,1,1,2,1
+        ]
+    },
+    {
+        "name" : "Bebop molová",
+        "category" : "Jazzové",
+        "feelings" : "swingový, sofistikovaný, melodický, cool",
+        "genre" : "bebop, modern jazz",
+        "usage" : "improvizace přes mollové akordy, bebop walking bass linky",
+        "intervals" : [
+            2,1,2,2,1,1,2,1
+        ]
+    },
+    {
+        "name" : "Maďarská molová",
+        "category" : "Exotické",
+        "feelings" : "dramatický, napínavý, temný, vášnivý",
+        "genre" : "filmová hudba, klasická hudba",
+        "usage" : "dramatické filmové soundtracky, romantická klasická hudba",
+        "intervals" : [
+            2,1,3,1,1,3,1
+        ]
+    },
+    {
+        "name" : "Dvojitá harmonická durová",
+        "category" : "Exotické",
+        "feelings" : "orientální, mystický, exotický, napjatý",
+        "genre" : "byzantská hudba, metal, orientální",
+        "usage" : "blízkovýchodní melodie, progresivní metal, mystické pasáže",
+        "intervals" : [
+            1,3,1,2,1,3,1
+        ]
+    },
+    {
+        "name" : "Perská",
+        "category" : "Exotické",
+        "feelings" : "orientální, mystický, exotický, starobylý",
+        "genre" : "perská hudba, world music",
+        "usage" : "tradiční perské melodie, blízkovýchodní improvizace",
+        "intervals" : [
+            1,3,1,1,2,3,1
+        ]
+    },
+    {
+        "name" : "Cikánská molová",
+        "category" : "Exotické",
+        "feelings" : "cigánský, vášnivý, dramatický, temperamentní",
+        "genre" : "cikánská hudba, metal, balkanská hudba",
+        "usage" : "romská hudba, balkánské melodie, neoclassical metal",
+        "intervals" : [
+            2,1,3,1,1,2,2
+        ]
+    },
+    {
+        "name" : "Neapolská molová",
+        "category" : "Exotické",
+        "feelings" : "dramatický, temný, teatrální, intenzivní",
+        "genre" : "klasická hudba, metal, filmová hudba",
+        "usage" : "barokní skladby, symfonický metal, dramatické soundtracky",
+        "intervals" : [
+            1,2,2,2,1,3,1
+        ]
+    },
+    {
+        "name" : "Neapolská durová",
+        "category" : "Exotické",
+        "feelings" : "neobvyklý, mystický, dramatický, jemný",
+        "genre" : "klasická hudba, filmová hudba",
+        "usage" : "klasické kompozice, experimentální soundtracky",
+        "intervals" : [
+            1,2,2,2,2,2,1
+        ]
+    },
+    {
+        "name" : "Židovská (Ahava Raba)",
+        "category" : "Exotické",
+        "feelings" : "radostný, náboženský, slavnostní, tradiční",
+        "genre" : "klezmer, židovská hudba",
+        "usage" : "klezmer melodie, židovské svatební písně, tradiční tance",
+        "intervals" : [
+            1,3,1,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Hirajoshi",
+        "category" : "Exotické",
+        "feelings" : "japonský, klidný, meditativní, minimalistický",
+        "genre" : "japonská hudba, ambient",
+        "usage" : "tradiční japonské melodie, meditativní hudba",
+        "intervals" : [
+            2,1,4,1,4
+        ]
+    },
+    {
+        "name" : "In Sen",
+        "category" : "Exotické",
+        "feelings" : "japonský, temný, mystický, kontemplativní",
+        "genre" : "japonská hudba, world music",
+        "usage" : "tradiční japonské skladby, world music projekty",
+        "intervals" : [
+            1,4,2,1,4
+        ]
+    },
+    {
+        "name" : "Arabská (Hidžáz)",
+        "category" : "Exotické",
+        "feelings" : "orientální, vášnivý, exotický, mystický",
+        "genre" : "arabská hudba, world music",
+        "usage" : "blízkovýchodní melodie, orientální improvizace",
+        "intervals" : [
+            1,3,1,2,1,2,2
+        ]
+    },
+    {
+        "name" : "Španělská 8-tónová",
+        "category" : "Exotické",
+        "feelings" : "španělský, vášnivý, dramatický, flamencový",
+        "genre" : "flamenco, španělská hudba",
+        "usage" : "flamencové improvizace, španělská kytarová hudba",
+        "intervals" : [
+            1,2,1,1,1,2,2,2
+        ]
+    },
+    {
+        "name" : "Celotónová",
+        "category" : "Neobvyklé",
+        "feelings" : "snový, surrealistický, éterický, tajemný",
+        "genre" : "impresionismus, ambient",
+        "usage" : "impresionistické pasáže à la Debussy, ambientní plochy",
+        "intervals" : [
+            2,2,2,2,2,2
+        ]
+    },
+    {
+        "name" : "Zmenšená",
+        "category" : "Neobvyklé",
+        "feelings" : "tmavý, hrozivý, znepokojivý, napjatý",
+        "genre" : "klasická hudba, hororové soundtracky",
+        "usage" : "napětí v klasických skladbách, hororové efekty",
+        "intervals" : [
+            1,2,1,2,1,2,1,2
+        ]
+    },
+    {
+        "name" : "Oktatonická",
+        "category" : "Neobvyklé",
+        "feelings" : "tajemný, tmavý, rytmický, hypnotický",
+        "genre" : "film noir, moderní klasická hudba",
+        "usage" : "hudba k detektivkám, orchestrální pasáže Stravinského",
+        "intervals" : [
+            2,1,2,1,2,1,2,1
+        ]
+    },
+    {
+        "name" : "Alterovaná",
+        "category" : "Neobvyklé",
+        "feelings" : "napjatý, disonantní, авангардный, komplexní",
+        "genre" : "moderní jazz, fusion",
+        "usage" : "alterované dominantní akordy v jazzu, napětí ve fusion sólech",
+        "intervals" : [
+            1,2,1,2,2,2,2
+        ]
+    },
+    {
+        "name" : "Chromatická",
+        "category" : "Neobvyklé",
+        "feelings" : "atonální, disonantní, experimentální, znepokojivý",
+        "genre" : "avantgarda, filmová hudba",
+        "usage" : "napětí ve filmové hudbě, moderní klasika",
+        "intervals" : [
+            1,1,1,1,1,1,1,1,1,1,1,1
+        ]
+    }
+]

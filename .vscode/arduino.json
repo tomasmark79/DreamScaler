@@ -1,0 +1,8 @@
+{
+    "port": "/dev/ttyUSB1",
+    "board": "arduino:avr:unomini",
+    "output": "./build",
+    "intelliSenseGen": "global",
+    "sketch": "ds_usb_controller/ds_usb_controller.ino",
+    "arduino.path": "/home/tomas/.local/bin/arduino-ide_2.3.6_Linux_64bit"
+}
