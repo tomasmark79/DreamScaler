@@ -166,16 +166,21 @@ def show_octaves(controller):
 # Názvy not
 NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 
-# Barvy pro stupně stupnice (jemné pastelové odstíny pro harmonické rozlišení)
+# Méně rušivé barvy pro stupnice
 SCALE_DEGREE_COLORS = {
-    1: (LED_INTENSITY * 2, 0, 0, 0),                           # Root (Tónika) - Výrazná červená
-    2: (LED_INTENSITY, LED_INTENSITY // 2, 0, 0),             # 2. stupeň - Oranžová
-    3: (LED_INTENSITY, LED_INTENSITY, 0, 0),                   # 3. stupeň - Žlutá
-    4: (LED_INTENSITY // 2, LED_INTENSITY, 0, 0),             # 4. stupeň - Žlutozelená
-    5: (0, LED_INTENSITY, LED_INTENSITY // 2, 0),             # 5. stupeň - Tyrkysová
-    6: (0, LED_INTENSITY // 2, LED_INTENSITY, 0),             # 6. stupeň - Světle modrá
-    7: (LED_INTENSITY // 2, 0, LED_INTENSITY, 0),             # 7. stupeň - Fialová
-    'dim': (LED_INTENSITY // 3, 0, 0, 0),                      # Diminished - Tmavě červená
+    # Akordové tóny (triáda) - jasné barvy
+    # POZOR: LED_INTENSITY může být 1, proto používáme násobení pro zachování poměrů
+    1: (0, 0, 0, LED_INTENSITY),                       # Prima - Tónika - Bílá
+    3: (0, LED_INTENSITY, 0, 0),                       # Tercie - Zelená
+    5: (0, 0, LED_INTENSITY, 0),                       # Kvinta - Modrá
+    
+    # Průchozí tóny
+    2: (LED_INTENSITY, LED_INTENSITY,  0),             # 2. stupeň - Oranžová
+    4: (LED_INTENSITY, LED_INTENSITY, 0, 0),           # 4. stupeň - Žlutá
+    6: (0, LED_INTENSITY, LED_INTENSITY, 0),           # 6. stupeň - Tyrkysová
+    7: (LED_INTENSITY, 0, LED_INTENSITY, 0),           # 7. stupeň - Fialová
+    
+    'dim': (1, 0, 0, 0),                               # Diminished - minimální červená
 }
 
 
