@@ -21,6 +21,7 @@ from arturia_keylab49_map import (
     get_all_black_keys,
     print_piano_map
 )
+from scale_selector_gui import ScaleSelectorGUI, load_scales_from_file
 
 # Globální reference na controller pro cleanup
 _global_controller = None
@@ -170,7 +171,7 @@ NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 SCALE_DEGREE_COLORS = {
     # Akordové tóny (triáda) - jasné barvy
     # POZOR: LED_INTENSITY může být 1, proto používáme násobení pro zachování poměrů
-    1: (0, 0, 0, LED_INTENSITY),                       # Prima - Tónika - Bílá
+    1: (LED_INTENSITY, 0, 0, 0),                       # Prima - Tónika - Bílá
     3: (0, LED_INTENSITY, 0, 0),                       # Tercie - Zelená
     5: (0, 0, LED_INTENSITY, 0),                       # Kvinta - Modrá
     
@@ -428,6 +429,341 @@ def show_scale_root_menu(controller, scale):
             print("✗ Neplatná volba")
 
 
+def show_scale_selector_gui(controller):
+    """
+    Spustí grafické okno pro výběr stupnice
+    
+    Args:
+        controller: LEDController instance
+    """
+    import threading
+    
+    def on_scale_selected(root_note, scale_name, intervals):
+        """Callback volaný z GUI při výběru stupnice"""
+        if root_note is None:
+            # Vymazat LED
+            controller.clear_all()
+        else:
+            # Zobrazit stupnici
+            show_scale(controller, root_note, scale_name, intervals)
+    
+    print("\n🖼️  Otevírám grafický výběr stupnice...")
+    print("   (Okno se otevře v samostatném okně)")
+    
+    # Načíst stupnice
+    scales = load_scales_from_file()
+    if not scales:
+        print("✗ Nepodařilo se načíst stupnice")
+        return
+    
+    # Vytvořit a spustit GUI
+    gui = ScaleSelectorGUI(scales, on_scale_selected)
+    gui.run()
+    
+    print("✓ GUI zavřeno")
+
+
+# ============================================================
+# CHORD PROGRESSIONS (Akordové postupy)
+# ============================================================
+
+# Definice typických akordových postupů
+CHORD_PROGRESSIONS = {
+    "I-IV-V-I": {
+        "name": "Základní kadence",
+        "description": "Nejzákladnější harmonický postup v západní hudbě",
+        "genre": "Pop, Rock, Folk, Country",
+        "chords": [1, 4, 5, 1],
+        "chord_types": ["maj", "maj", "maj", "maj"]
+    },
+    "I-V-vi-IV": {
+        "name": "Pop progrese",
+        "description": "Nejpoužívanější postup v pop music (Axis progression)",
+        "genre": "Pop, Rock",
+        "chords": [1, 5, 6, 4],
+        "chord_types": ["maj", "maj", "min", "maj"]
+    },
+    "ii-V-I": {
+        "name": "Jazz kadence",
+        "description": "Základní jazzová kadence",
+        "genre": "Jazz, Bossa Nova",
+        "chords": [2, 5, 1],
+        "chord_types": ["min7", "dom7", "maj7"]
+    },
+    "I-vi-IV-V": {
+        "name": "50s progression",
+        "description": "Doo-wop postup z 50. let",
+        "genre": "Oldies, Doo-wop",
+        "chords": [1, 6, 4, 5],
+        "chord_types": ["maj", "min", "maj", "maj"]
+    },
+    "vi-IV-I-V": {
+        "name": "Emotional progression",
+        "description": "Mollová varianta pop progrese",
+        "genre": "Pop, Ballads",
+        "chords": [6, 4, 1, 5],
+        "chord_types": ["min", "maj", "maj", "maj"]
+    },
+    "I-IV-vi-V": {
+        "name": "Country progression",
+        "description": "Běžný postup v country a folk",
+        "genre": "Country, Folk",
+        "chords": [1, 4, 6, 5],
+        "chord_types": ["maj", "maj", "min", "maj"]
+    },
+    "i-VII-VI-VII": {
+        "name": "Andaluská kadence",
+        "description": "Flamenco/španělský postup",
+        "genre": "Flamenco, Metal",
+        "chords": [1, 7, 6, 7],
+        "chord_types": ["min", "maj", "maj", "maj"]
+    },
+    "I-bVII-IV-I": {
+        "name": "Mixolydian vamp",
+        "description": "Rockový postup s bVII",
+        "genre": "Rock, Blues rock",
+        "chords": [1, -7, 4, 1],  # -7 = bVII (snížená septima)
+        "chord_types": ["maj", "maj", "maj", "maj"]
+    },
+    "12-bar-blues": {
+        "name": "12-taktový blues",
+        "description": "Klasická bluesová forma",
+        "genre": "Blues, Rock'n'roll",
+        "chords": [1, 1, 1, 1, 4, 4, 1, 1, 5, 4, 1, 5],
+        "chord_types": ["dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7", "dom7"]
+    }
+}
+
+# Barvy pro akordy v progresi
+CHORD_COLORS = {
+    1: (LED_INTENSITY * 2, 0, 0, 0),          # I - Červená (tónika)
+    2: (LED_INTENSITY, LED_INTENSITY, 0, 0),   # ii - Žlutá
+    3: (0, LED_INTENSITY * 2, 0, 0),           # iii - Zelená
+    4: (0, LED_INTENSITY, LED_INTENSITY, 0),   # IV - Tyrkysová (subdominanta)
+    5: (0, 0, LED_INTENSITY * 2, 0),           # V - Modrá (dominanta)
+    6: (LED_INTENSITY, 0, LED_INTENSITY, 0),   # vi - Magenta
+    7: (LED_INTENSITY, LED_INTENSITY // 2, 0, 0),  # vii° - Oranžová
+    -7: (LED_INTENSITY, 0, 0, LED_INTENSITY),  # bVII - Červená + bílá
+}
+
+# Intervaly akordů (od základního tónu)
+CHORD_INTERVALS = {
+    "maj": [0, 4, 7],           # Durový kvintakord
+    "min": [0, 3, 7],           # Mollový kvintakord
+    "dim": [0, 3, 6],           # Zmenšený
+    "aug": [0, 4, 8],           # Zvětšený
+    "maj7": [0, 4, 7, 11],      # Durový septakord
+    "min7": [0, 3, 7, 10],      # Mollový septakord
+    "dom7": [0, 4, 7, 10],      # Dominantní septakord
+    "dim7": [0, 3, 6, 9],       # Zmenšený septakord
+}
+
+# Stupně durové stupnice v půltónech od tóniky
+SCALE_DEGREES_SEMITONES = {
+    1: 0,   # I
+    2: 2,   # ii
+    3: 4,   # iii
+    4: 5,   # IV
+    5: 7,   # V
+    6: 9,   # vi
+    7: 11,  # vii°
+    -7: 10, # bVII (snížená septima)
+}
+
+
+def get_chord_notes(root, degree, chord_type):
+    """
+    Získá noty akordu
+    
+    Args:
+        root: kořenová nota stupnice (0-11)
+        degree: stupeň akordu (1-7, nebo -7 pro bVII)
+        chord_type: typ akordu ("maj", "min", "dom7", atd.)
+    
+    Returns:
+        Seznam not akordu (0-11)
+    """
+    # Základní tón akordu
+    chord_root = (root + SCALE_DEGREES_SEMITONES[degree]) % 12
+    
+    # Intervaly akordu
+    intervals = CHORD_INTERVALS.get(chord_type, CHORD_INTERVALS["maj"])
+    
+    # Noty akordu
+    return [(chord_root + interval) % 12 for interval in intervals]
+
+
+def show_chord(controller, root, degree, chord_type, color):
+    """
+    Zobrazí akord na klaviatuře
+    
+    Args:
+        controller: LEDController instance
+        root: kořenová nota stupnice (0-11)
+        degree: stupeň akordu
+        chord_type: typ akordu
+        color: barva pro zobrazení
+    """
+    chord_notes = get_chord_notes(root, degree, chord_type)
+    
+    for led_pos, note, is_white, octave in PIANO_KEY_MAP:
+        if led_pos < 144:
+            if note in chord_notes:
+                controller.set_pixel(led_pos, *color)
+
+
+def show_progression(controller, root_note, progression_key):
+    """
+    Zobrazí akordový postup s animací
+    
+    Args:
+        controller: LEDController instance
+        root_note: kořenová nota (0-11)
+        progression_key: klíč do CHORD_PROGRESSIONS
+    """
+    progression = CHORD_PROGRESSIONS[progression_key]
+    
+    print(f"\n=== {NOTE_NAMES[root_note]} - {progression['name']} ===")
+    print(f"Postup: {progression_key}")
+    print(f"Popis: {progression['description']}")
+    print(f"Žánr: {progression['genre']}")
+    print(f"\nAkordy v progresi:")
+    
+    chords = progression['chords']
+    chord_types = progression['chord_types']
+    
+    # Zobraz informace o akordech
+    for i, (degree, chord_type) in enumerate(zip(chords, chord_types)):
+        chord_notes = get_chord_notes(root_note, degree, chord_type)
+        chord_name = NOTE_NAMES[chord_notes[0]]
+        
+        # Přidej typ akordu k názvu
+        type_suffix = ""
+        if chord_type == "min" or chord_type == "min7":
+            type_suffix = "m"
+        elif chord_type == "dim" or chord_type == "dim7":
+            type_suffix = "°"
+        elif chord_type == "dom7":
+            type_suffix = "7"
+        elif chord_type == "maj7":
+            type_suffix = "maj7"
+        
+        print(f"  {i+1}. {chord_name}{type_suffix} (stupeň {degree if degree > 0 else 'b' + str(-degree)})")
+    
+    print("\n🎹 Přehrávám progresi... (Enter = další akord, 'q' = konec)")
+    
+    current_idx = 0
+    while True:
+        controller.clear_all()
+        
+        degree = chords[current_idx]
+        chord_type = chord_types[current_idx]
+        color = CHORD_COLORS.get(degree, (LED_INTENSITY, LED_INTENSITY, LED_INTENSITY, 0))
+        
+        show_chord(controller, root_note, degree, chord_type, color)
+        
+        chord_notes = get_chord_notes(root_note, degree, chord_type)
+        chord_name = NOTE_NAMES[chord_notes[0]]
+        
+        print(f"\n  ▶ Akord {current_idx + 1}/{len(chords)}: {chord_name} ({chord_type})")
+        
+        choice = input("    [Enter=další, 'a'=auto, 'r'=restart, 'q'=konec]: ").strip().lower()
+        
+        if choice == 'q':
+            break
+        elif choice == 'r':
+            current_idx = 0
+            continue
+        elif choice == 'a':
+            # Auto mode - přehrát celou progresi
+            print("\n  🔄 Auto režim (1.5s na akord)...")
+            for idx in range(len(chords)):
+                controller.clear_all()
+                d = chords[idx]
+                ct = chord_types[idx]
+                col = CHORD_COLORS.get(d, (LED_INTENSITY, LED_INTENSITY, LED_INTENSITY, 0))
+                show_chord(controller, root_note, d, ct, col)
+                
+                cn = get_chord_notes(root_note, d, ct)
+                print(f"    ▶ {NOTE_NAMES[cn[0]]} ({ct})")
+                time.sleep(1.5)
+            
+            print("  ✓ Progrese dokončena")
+            current_idx = 0
+            continue
+        else:
+            current_idx = (current_idx + 1) % len(chords)
+    
+    controller.clear_all()
+
+
+def show_chord_progressions_menu(controller):
+    """Menu pro výběr akordového postupu"""
+    while True:
+        print("\n" + "="*60)
+        print("AKORDOVÉ POSTUPY (Chord Progressions)")
+        print("="*60)
+        print(f"\nDostupné postupy ({len(CHORD_PROGRESSIONS)}):\n")
+        
+        prog_list = list(CHORD_PROGRESSIONS.keys())
+        for i, key in enumerate(prog_list, 1):
+            prog = CHORD_PROGRESSIONS[key]
+            print(f"{i:2}. {key:20} - {prog['name']}")
+            print(f"     {prog['genre']}")
+        
+        print("\n 0. Zpět")
+        print("="*60)
+        
+        choice = input("\nVyberte postup: ").strip()
+        
+        if choice == '0':
+            controller.clear_all()
+            break
+        
+        try:
+            prog_idx = int(choice) - 1
+            if 0 <= prog_idx < len(prog_list):
+                selected_prog = prog_list[prog_idx]
+                show_progression_root_menu(controller, selected_prog)
+            else:
+                print("✗ Neplatná volba")
+        except ValueError:
+            print("✗ Neplatná volba")
+
+
+def show_progression_root_menu(controller, progression_key):
+    """Menu pro výběr kořenové noty pro progresi"""
+    progression = CHORD_PROGRESSIONS[progression_key]
+    
+    while True:
+        print("\n" + "="*60)
+        print(f"POSTUP: {progression_key} - {progression['name']}")
+        print("="*60)
+        print(f"\nPopis: {progression['description']}")
+        print(f"Žánr: {progression['genre']}")
+        print("\nVyberte tóninu (kořenovou notu):\n")
+        
+        for i, note in enumerate(NOTE_NAMES, 1):
+            print(f"{i:2}. {note}")
+        
+        print("\n99. Zpět")
+        print("="*60)
+        
+        choice = input("\nVaše volba: ").strip()
+        
+        if choice == '99':
+            break
+        
+        try:
+            root = int(choice) - 1
+            if 0 <= root <= 11:
+                show_progression(controller, root, progression_key)
+            else:
+                print("✗ Neplatná volba")
+        except ValueError:
+            print("✗ Neplatná volba")
+
+
 # ============================================================
 # HLAVNÍ MENU
 # ============================================================
@@ -444,8 +780,10 @@ def print_menu():
     print("3. Pouze černé klávesy")
     print("4. Zobrazit oktávy (barevně)")
     print("5. Test animace kláves")
-    print("\nSTUPNICE:")
+    print("\nSTUPNICE A AKORDY:")
     print("10. Všechny stupnice (kategorie)")
+    print("11. Akordové postupy (Chord Progressions)")
+    print("12. 🖼️  Grafický výběr stupnice (GUI)")
     print("\nUTILITY:")
     print("6. Vypsat mapu kláves")
     print("7. Vymazat všechny LED")
@@ -522,6 +860,12 @@ def main():
                 
                 elif choice == '10':
                     show_all_scales_menu(controller)
+                
+                elif choice == '11':
+                    show_chord_progressions_menu(controller)
+                
+                elif choice == '12':
+                    show_scale_selector_gui(controller)
                 
                 elif choice == '8':
                     print("\n⚠ MIDI monitoring - zatím neimplementováno")
