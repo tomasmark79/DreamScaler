@@ -104,18 +104,18 @@ class ScaleSelectorGUI:
         main_frame.pack(fill=tk.BOTH, expand=True)
         
         # Nadpis
-        title_label = ttk.Label(main_frame, text="🎹 DreamScaler - Výběr stupnice", style='Title.TLabel')
+        title_label = ttk.Label(main_frame, text="🎹 DreamScaler - Scale Selector", style='Title.TLabel')
         title_label.pack(pady=(0, 20))
         
         # ===== Sekce výběru =====
-        select_frame = ttk.LabelFrame(main_frame, text="Výběr stupnice", padding="15")
+        select_frame = ttk.LabelFrame(main_frame, text="Scale Selection", padding="15")
         select_frame.pack(fill=tk.X, pady=(0, 15))
         
         # Kategorie
         cat_frame = ttk.Frame(select_frame)
         cat_frame.pack(fill=tk.X, pady=(0, 10))
         
-        ttk.Label(cat_frame, text="Kategorie:").pack(side=tk.LEFT, padx=(0, 10))
+        ttk.Label(cat_frame, text="Category:").pack(side=tk.LEFT, padx=(0, 10))
         self.category_var = tk.StringVar()
         self.category_combo = ttk.Combobox(cat_frame, textvariable=self.category_var, 
                                             values=sorted(self.categories.keys()),
@@ -127,7 +127,7 @@ class ScaleSelectorGUI:
         scale_frame = ttk.Frame(select_frame)
         scale_frame.pack(fill=tk.X, pady=(0, 10))
         
-        ttk.Label(scale_frame, text="Stupnice:").pack(side=tk.LEFT, padx=(0, 10))
+        ttk.Label(scale_frame, text="Scale:").pack(side=tk.LEFT, padx=(0, 10))
         self.scale_var = tk.StringVar()
         self.scale_combo = ttk.Combobox(scale_frame, textvariable=self.scale_var,
                                          state='readonly', width=30)
@@ -138,7 +138,7 @@ class ScaleSelectorGUI:
         root_frame = ttk.Frame(select_frame)
         root_frame.pack(fill=tk.X)
         
-        ttk.Label(root_frame, text="Kořenová nota:").pack(side=tk.LEFT, padx=(0, 10))
+        ttk.Label(root_frame, text="Root Note:").pack(side=tk.LEFT, padx=(0, 10))
         self.root_var = tk.StringVar(value='C')
         self.root_combo = ttk.Combobox(root_frame, textvariable=self.root_var,
                                         values=NOTE_NAMES, state='readonly', width=10)
@@ -146,7 +146,7 @@ class ScaleSelectorGUI:
         self.root_combo.bind('<<ComboboxSelected>>', self._on_root_change)
         
         # ===== Sekce informací =====
-        info_frame = ttk.LabelFrame(main_frame, text="Informace o stupnici", padding="15")
+        info_frame = ttk.LabelFrame(main_frame, text="Scale Information", padding="15")
         info_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 15))
         
         # Info grid
@@ -166,7 +166,7 @@ class ScaleSelectorGUI:
         self.notes_frame = ttk.Frame(info_frame)
         self.notes_frame.pack(fill=tk.X, pady=(15, 0))
         
-        ttk.Label(self.notes_frame, text="Noty ve stupnici:").pack(anchor=tk.W)
+        ttk.Label(self.notes_frame, text="Notes in scale:").pack(anchor=tk.W)
         self.notes_display = tk.Frame(self.notes_frame, bg='#2b2b2b')
         self.notes_display.pack(fill=tk.X, pady=(5, 0))
         
@@ -174,26 +174,26 @@ class ScaleSelectorGUI:
         button_frame = ttk.Frame(main_frame)
         button_frame.pack(fill=tk.X)
         
-        self.apply_btn = tk.Button(button_frame, text="🎹 Zobrazit na LED", 
+        self.apply_btn = tk.Button(button_frame, text="🎹 Show on LED", 
                                    command=self._apply_scale,
                                    bg='#4CAF50', fg='white', font=('Segoe UI', 11, 'bold'),
                                    padx=20, pady=10, cursor='hand2')
         self.apply_btn.pack(side=tk.LEFT, padx=(0, 10))
         
-        self.clear_btn = tk.Button(button_frame, text="🧹 Vymazat LED",
+        self.clear_btn = tk.Button(button_frame, text="🧹 Clear LED",
                                    command=self._clear_leds,
                                    bg='#f44336', fg='white', font=('Segoe UI', 11),
                                    padx=20, pady=10, cursor='hand2')
         self.clear_btn.pack(side=tk.LEFT, padx=(0, 10))
         
-        close_btn = tk.Button(button_frame, text="Zavřít",
+        close_btn = tk.Button(button_frame, text="Close",
                               command=self._on_close,
                               bg='#555555', fg='white', font=('Segoe UI', 11),
                               padx=20, pady=10, cursor='hand2')
         close_btn.pack(side=tk.RIGHT)
         
         # Status bar
-        self.status_var = tk.StringVar(value="Vyberte kategorii a stupnici")
+        self.status_var = tk.StringVar(value="Select a category and scale")
         status_bar = ttk.Label(main_frame, textvariable=self.status_var, 
                               style='Info.TLabel', anchor=tk.W)
         status_bar.pack(fill=tk.X, pady=(10, 0))
@@ -239,11 +239,11 @@ class ScaleSelectorGUI:
     def _update_info_display(self):
         """Aktualizuje zobrazení informací o stupnici"""
         if self.current_scale:
-            self.info_feelings.config(text=f"💭 Pocit: {self.current_scale.get('feelings', 'N/A')}")
-            self.info_genre.config(text=f"🎵 Žánr: {self.current_scale.get('genre', 'N/A')}")
-            self.info_usage.config(text=f"📝 Použití: {self.current_scale.get('usage', 'N/A')}")
-            self.info_intervals.config(text=f"🔢 Intervaly: {self.current_scale.get('intervals', [])}")
-            self.status_var.set(f"Vybrána stupnice: {self.current_scale['name']}")
+            self.info_feelings.config(text=f"💭 Feelings: {self.current_scale.get('feelings', 'N/A')}")
+            self.info_genre.config(text=f"🎵 Genre: {self.current_scale.get('genre', 'N/A')}")
+            self.info_usage.config(text=f"📝 Usage: {self.current_scale.get('usage', 'N/A')}")
+            self.info_intervals.config(text=f"🔢 Intervals: {self.current_scale.get('intervals', [])}")
+            self.status_var.set(f"Selected scale: {self.current_scale['name']}")
         else:
             self.info_feelings.config(text="")
             self.info_genre.config(text="")
@@ -287,9 +287,9 @@ class ScaleSelectorGUI:
             note_label.pack(side=tk.LEFT, padx=2)
             
             # Tooltip s číslem stupně
-            degree_names = {1: 'Prima', 2: 'Sekunda', 3: 'Tercie', 4: 'Kvarta',
-                           5: 'Kvinta', 6: 'Sexta', 7: 'Septima'}
-            tooltip_text = f"{deg}. stupeň ({degree_names.get(deg, '')})"
+            degree_names = {1: 'Root', 2: 'Second', 3: 'Third', 4: 'Fourth',
+                           5: 'Fifth', 6: 'Sixth', 7: 'Seventh'}
+            tooltip_text = f"Degree {deg} ({degree_names.get(deg, '')})"
             self._create_tooltip(note_label, tooltip_text)
     
     def _create_tooltip(self, widget, text):
@@ -313,54 +313,60 @@ class ScaleSelectorGUI:
     def _apply_scale(self):
         """Aplikuje vybranou stupnici (zavolá callback)"""
         if not self.current_scale:
-            self.status_var.set("⚠️ Nejprve vyberte stupnici!")
+            self.status_var.set("⚠️ Please select a scale first!")
             return
         
         root_name = NOTE_NAMES[self.current_root]
         scale_name = self.current_scale['name']
         intervals = self.current_scale['intervals']
         
-        self.status_var.set(f"✓ Zobrazuji: {root_name} {scale_name}")
+        self.status_var.set(f"✓ Showing: {root_name} {scale_name}")
         
         if self.on_scale_selected:
             self.on_scale_selected(self.current_root, scale_name, intervals)
     
     def _clear_leds(self):
         """Vymaže LED (zavolá callback s None)"""
-        self.status_var.set("🧹 LED vymazány")
+        self.status_var.set("🧹 LED cleared")
         if self.on_scale_selected:
             self.on_scale_selected(None, None, None)  # Signal pro vymazání
 
 
-def load_scales_from_file(filepath='scales.json'):
-    """Načte stupnice ze souboru"""
+def load_scales_from_file(filepath='scales_en.json'):
+    """Načte stupnice ze souboru (výchozí: anglická verze)"""
     try:
         path = Path(filepath)
         if not path.exists():
             # Zkusit relativní cestu od tohoto skriptu
             path = Path(__file__).parent / filepath
         
+        if not path.exists():
+            # Fallback na českou verzi
+            path = Path(__file__).parent / 'scales.json'
+        
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
-        print(f"Chyba při načítání scales.json: {e}")
+        print(f"Error loading scales: {e}")
         return []
 
 
-def show_scale_selector(on_scale_selected=None):
+def show_scale_selector(on_scale_selected=None, language='en'):
     """
     Zobrazí GUI pro výběr stupnice
     
     Args:
         on_scale_selected: callback(root_note, scale_name, intervals)
                           root_note=None znamená vymazat LED
+        language: 'en' pro angličtinu, 'cs' pro češtinu
     
     Returns:
         ScaleSelectorGUI instance
     """
-    scales = load_scales_from_file()
+    filepath = 'scales_en.json' if language == 'en' else 'scales.json'
+    scales = load_scales_from_file(filepath)
     if not scales:
-        print("⚠️ Nepodařilo se načíst stupnice")
+        print("⚠️ Could not load scales")
         return None
     
     gui = ScaleSelectorGUI(scales, on_scale_selected)
@@ -372,9 +378,9 @@ def show_scale_selector(on_scale_selected=None):
 if __name__ == '__main__':
     def test_callback(root, name, intervals):
         if root is None:
-            print("LED vymazány")
+            print("LED cleared")
         else:
-            print(f"Vybrána stupnice: {NOTE_NAMES[root]} {name}")
-            print(f"Intervaly: {intervals}")
+            print(f"Selected scale: {NOTE_NAMES[root]} {name}")
+            print(f"Intervals: {intervals}")
     
     show_scale_selector(test_callback)

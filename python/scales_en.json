@@ -1,0 +1,314 @@
+[
+    {
+        "name": "Major",
+        "category": "Common",
+        "feelings": "bright, happy, hopeful, triumphant",
+        "genre": "pop, folk, classical music",
+        "usage": "most pop hits, traditional songs and hymns",
+        "intervals": [2, 2, 1, 2, 2, 2, 1]
+    },
+    {
+        "name": "Aeolian (Natural Minor)",
+        "category": "Common",
+        "feelings": "melancholic, sad, introspective, dark",
+        "genre": "alternative rock, folk",
+        "usage": "ballads, indie folk songs and melancholic soundtracks",
+        "intervals": [2, 1, 2, 2, 1, 2, 2]
+    },
+    {
+        "name": "Harmonic Minor",
+        "category": "Common",
+        "feelings": "exotic, dark, mysterious, passionate",
+        "genre": "metal, classical music",
+        "usage": "baroque compositions, neoclassical metal and oriental motifs",
+        "intervals": [2, 1, 2, 2, 1, 3, 1]
+    },
+    {
+        "name": "Melodic Minor",
+        "category": "Common",
+        "feelings": "melancholic, introspective, elegant, dramatic",
+        "genre": "jazz, film music",
+        "usage": "modern jazz improvisation, dramatic film motifs",
+        "intervals": [2, 1, 2, 2, 2, 2, 1]
+    },
+    {
+        "name": "Harmonic Major",
+        "category": "Common",
+        "feelings": "unusual, exotic, jazzy, sophisticated",
+        "genre": "jazz, classical music",
+        "usage": "jazz harmonic progressions, classical compositions",
+        "intervals": [2, 2, 1, 2, 1, 3, 1]
+    },
+    {
+        "name": "Major Pentatonic",
+        "category": "Common",
+        "feelings": "warm, open, calm, simple",
+        "genre": "country, gospel",
+        "usage": "country guitar solos, traditional folk melodies",
+        "intervals": [2, 2, 3, 2, 3]
+    },
+    {
+        "name": "Minor Pentatonic",
+        "category": "Common",
+        "feelings": "soulful, bluesy, introspective, cool",
+        "genre": "rock, blues",
+        "usage": "rock guitar solos, blues riffs",
+        "intervals": [3, 2, 2, 3, 2]
+    },
+    {
+        "name": "Egyptian Pentatonic",
+        "category": "Common",
+        "feelings": "mystical, exotic, ancient, oriental",
+        "genre": "world music, ambient",
+        "usage": "ethnic music, oriental motifs, meditative compositions",
+        "intervals": [2, 3, 2, 3, 2]
+    },
+    {
+        "name": "Minor Blues",
+        "category": "Blues",
+        "feelings": "soulful, raw, emotional, gritty",
+        "genre": "blues, rock",
+        "usage": "traditional blues progressions, blues-inspired rock solos",
+        "intervals": [3, 2, 1, 1, 3, 2]
+    },
+    {
+        "name": "Major Blues",
+        "category": "Blues",
+        "feelings": "uplifting, bluesy, joyful, funky",
+        "genre": "swing, soul",
+        "usage": "swing lines, soul vocal melodies",
+        "intervals": [2, 1, 1, 3, 2, 3]
+    },
+    {
+        "name": "Kansas City Blues",
+        "category": "Blues",
+        "feelings": "energetic, driving, soulful, powerful",
+        "genre": "jump blues, big band",
+        "usage": "Kansas City jazz and upbeat blues shuffle patterns",
+        "intervals": [2, 3, 2, 1, 4]
+    },
+    {
+        "name": "Dorian",
+        "category": "Modal",
+        "feelings": "smooth, sophisticated, funky, modal",
+        "genre": "funk, fusion",
+        "usage": "funk groove jams, jazz fusion solos",
+        "intervals": [2, 1, 2, 2, 2, 1, 2]
+    },
+    {
+        "name": "Phrygian",
+        "category": "Modal",
+        "feelings": "exotic, dark, Spanish, mysterious",
+        "genre": "flamenco, progressive metal",
+        "usage": "Spanish guitar solos, metal riffs with Spanish flavor",
+        "intervals": [1, 2, 2, 2, 1, 2, 2]
+    },
+    {
+        "name": "Lydian",
+        "category": "Modal",
+        "feelings": "bright, ethereal, dreamy, whimsical",
+        "genre": "film soundtracks, dream pop",
+        "usage": "hopeful film themes, ambient dream pop melodies",
+        "intervals": [2, 2, 2, 1, 2, 2, 1]
+    },
+    {
+        "name": "Mixolydian",
+        "category": "Modal",
+        "feelings": "dominant, groovy, bluesy, rocky",
+        "genre": "rock, funk",
+        "usage": "dominant chords in rock'n'roll, funk jams and jam bands",
+        "intervals": [2, 2, 1, 2, 2, 1, 2]
+    },
+    {
+        "name": "Locrian",
+        "category": "Modal",
+        "feelings": "ominous, dark, tense, unstable",
+        "genre": "avant-garde, progressive music",
+        "usage": "experimental compositions, progressive metal effects",
+        "intervals": [1, 2, 2, 1, 2, 2, 2]
+    },
+    {
+        "name": "Lydian Dominant",
+        "category": "Modal",
+        "feelings": "exotic, bright, surprising, funky",
+        "genre": "fusion, modern jazz",
+        "usage": "dominant chords in jazz fusion, funky improvisation",
+        "intervals": [2, 2, 2, 1, 2, 1, 2]
+    },
+    {
+        "name": "Phrygian Dominant",
+        "category": "Modal",
+        "feelings": "oriental, dramatic, tense, dark",
+        "genre": "metal, flamenco, oriental music",
+        "usage": "metal riffs, Spanish flamenco, Middle Eastern melodies",
+        "intervals": [1, 3, 1, 2, 1, 2, 2]
+    },
+    {
+        "name": "Mixolydian b6",
+        "category": "Modal",
+        "feelings": "bluesy, tense, jazzy, dark",
+        "genre": "jazz, blues rock",
+        "usage": "jazz improvisation, altered dominant chords",
+        "intervals": [2, 2, 1, 2, 1, 2, 2]
+    },
+    {
+        "name": "Dorian b2",
+        "category": "Modal",
+        "feelings": "oriental, mysterious, exotic, sophisticated",
+        "genre": "jazz fusion, world music",
+        "usage": "fusion improvisation, ethnic motifs",
+        "intervals": [1, 2, 2, 2, 2, 1, 2]
+    },
+    {
+        "name": "Bebop Dominant",
+        "category": "Jazz",
+        "feelings": "swinging, melodic, flowing, jazzy",
+        "genre": "bebop, swing",
+        "usage": "jazz improvisation over dominant chords, bebop lines",
+        "intervals": [2, 2, 1, 2, 2, 1, 1, 1]
+    },
+    {
+        "name": "Bebop Major",
+        "category": "Jazz",
+        "feelings": "lively, swinging, melodic, sophisticated",
+        "genre": "bebop, mainstream jazz",
+        "usage": "improvisation over major chords, fast jazz passages",
+        "intervals": [2, 2, 1, 2, 1, 1, 2, 1]
+    },
+    {
+        "name": "Bebop Minor",
+        "category": "Jazz",
+        "feelings": "swinging, sophisticated, melodic, cool",
+        "genre": "bebop, modern jazz",
+        "usage": "improvisation over minor chords, bebop walking bass lines",
+        "intervals": [2, 1, 2, 2, 1, 1, 2, 1]
+    },
+    {
+        "name": "Hungarian Minor",
+        "category": "Exotic",
+        "feelings": "dramatic, suspenseful, dark, passionate",
+        "genre": "film music, classical music",
+        "usage": "dramatic film soundtracks, romantic classical music",
+        "intervals": [2, 1, 3, 1, 1, 3, 1]
+    },
+    {
+        "name": "Double Harmonic Major",
+        "category": "Exotic",
+        "feelings": "oriental, mystical, exotic, tense",
+        "genre": "Byzantine music, metal, oriental",
+        "usage": "Middle Eastern melodies, progressive metal, mystical passages",
+        "intervals": [1, 3, 1, 2, 1, 3, 1]
+    },
+    {
+        "name": "Persian",
+        "category": "Exotic",
+        "feelings": "oriental, mystical, exotic, ancient",
+        "genre": "Persian music, world music",
+        "usage": "traditional Persian melodies, Middle Eastern improvisation",
+        "intervals": [1, 3, 1, 1, 2, 3, 1]
+    },
+    {
+        "name": "Gypsy Minor",
+        "category": "Exotic",
+        "feelings": "gypsy, passionate, dramatic, temperamental",
+        "genre": "gypsy music, metal, Balkan music",
+        "usage": "Roma music, Balkan melodies, neoclassical metal",
+        "intervals": [2, 1, 3, 1, 1, 2, 2]
+    },
+    {
+        "name": "Neapolitan Minor",
+        "category": "Exotic",
+        "feelings": "dramatic, dark, theatrical, intense",
+        "genre": "classical music, metal, film music",
+        "usage": "baroque compositions, symphonic metal, dramatic soundtracks",
+        "intervals": [1, 2, 2, 2, 1, 3, 1]
+    },
+    {
+        "name": "Neapolitan Major",
+        "category": "Exotic",
+        "feelings": "unusual, mystical, dramatic, gentle",
+        "genre": "classical music, film music",
+        "usage": "classical compositions, experimental soundtracks",
+        "intervals": [1, 2, 2, 2, 2, 2, 1]
+    },
+    {
+        "name": "Jewish (Ahava Raba)",
+        "category": "Exotic",
+        "feelings": "joyful, religious, festive, traditional",
+        "genre": "klezmer, Jewish music",
+        "usage": "klezmer melodies, Jewish wedding songs, traditional dances",
+        "intervals": [1, 3, 1, 2, 1, 2, 2]
+    },
+    {
+        "name": "Hirajoshi",
+        "category": "Exotic",
+        "feelings": "Japanese, calm, meditative, minimalist",
+        "genre": "Japanese music, ambient",
+        "usage": "traditional Japanese melodies, meditative music",
+        "intervals": [2, 1, 4, 1, 4]
+    },
+    {
+        "name": "In Sen",
+        "category": "Exotic",
+        "feelings": "Japanese, dark, mystical, contemplative",
+        "genre": "Japanese music, world music",
+        "usage": "traditional Japanese compositions, world music projects",
+        "intervals": [1, 4, 2, 1, 4]
+    },
+    {
+        "name": "Arabic (Hijaz)",
+        "category": "Exotic",
+        "feelings": "oriental, passionate, exotic, mystical",
+        "genre": "Arabic music, world music",
+        "usage": "Middle Eastern melodies, oriental improvisation",
+        "intervals": [1, 3, 1, 2, 1, 2, 2]
+    },
+    {
+        "name": "Spanish 8-Tone",
+        "category": "Exotic",
+        "feelings": "Spanish, passionate, dramatic, flamenco",
+        "genre": "flamenco, Spanish music",
+        "usage": "flamenco improvisation, Spanish guitar music",
+        "intervals": [1, 2, 1, 1, 1, 2, 2, 2]
+    },
+    {
+        "name": "Whole Tone",
+        "category": "Unusual",
+        "feelings": "dreamy, surreal, ethereal, mysterious",
+        "genre": "impressionism, ambient",
+        "usage": "impressionistic passages à la Debussy, ambient textures",
+        "intervals": [2, 2, 2, 2, 2, 2]
+    },
+    {
+        "name": "Diminished",
+        "category": "Unusual",
+        "feelings": "dark, ominous, unsettling, tense",
+        "genre": "classical music, horror soundtracks",
+        "usage": "tension in classical compositions, horror effects",
+        "intervals": [1, 2, 1, 2, 1, 2, 1, 2]
+    },
+    {
+        "name": "Octatonic",
+        "category": "Unusual",
+        "feelings": "mysterious, dark, rhythmic, hypnotic",
+        "genre": "film noir, modern classical music",
+        "usage": "detective film music, Stravinsky-style orchestral passages",
+        "intervals": [2, 1, 2, 1, 2, 1, 2, 1]
+    },
+    {
+        "name": "Altered",
+        "category": "Unusual",
+        "feelings": "tense, dissonant, avant-garde, complex",
+        "genre": "modern jazz, fusion",
+        "usage": "altered dominant chords in jazz, tension in fusion solos",
+        "intervals": [1, 2, 1, 2, 2, 2, 2]
+    },
+    {
+        "name": "Chromatic",
+        "category": "Unusual",
+        "feelings": "atonal, dissonant, experimental, unsettling",
+        "genre": "avant-garde, film music",
+        "usage": "tension in film music, modern classical",
+        "intervals": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    }
+]

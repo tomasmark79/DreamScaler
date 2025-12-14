@@ -164,6 +164,14 @@ def show_octaves(controller):
 # STUPNICE (SCALES)
 # ============================================================
 
+# ============================================================
+# UŽIVATELSKÉ NASTAVENÍ - REŽIM BAREV STUPNICE
+# ============================================================
+# True  = barvy podle typu klávesy (bílá/černá), root červeně
+# False = barvy podle stupňů stupnice (SCALE_DEGREE_COLORS)
+USE_KEY_COLOR_MODE = False
+# ============================================================
+
 # Názvy not
 NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 
@@ -171,19 +179,18 @@ NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 SCALE_DEGREE_COLORS = {
     # Akordové tóny (triáda) - jasné barvy
     # POZOR: LED_INTENSITY může být 1, proto používáme násobení pro zachování poměrů
-    1: (LED_INTENSITY, 0, 0, 0),                       # Prima - Tónika - Bílá
+    1: (LED_INTENSITY, 0, 0, 0),                       # Prima - Tónika - ČervenáBílá
     3: (0, LED_INTENSITY, 0, 0),                       # Tercie - Zelená
     5: (0, 0, LED_INTENSITY, 0),                       # Kvinta - Modrá
     
     # Průchozí tóny
-    2: (LED_INTENSITY, LED_INTENSITY,  0),             # 2. stupeň - Oranžová
+    2: (0, 0, 0, LED_INTENSITY),                       # 2. stupeň - Oranžová
     4: (LED_INTENSITY, LED_INTENSITY, 0, 0),           # 4. stupeň - Žlutá
     6: (0, LED_INTENSITY, LED_INTENSITY, 0),           # 6. stupeň - Tyrkysová
     7: (LED_INTENSITY, 0, LED_INTENSITY, 0),           # 7. stupeň - Fialová
     
     'dim': (1, 0, 0, 0),                               # Diminished - minimální červená
 }
-
 
 def load_scales():
     """Načte definice stupnic ze souboru scales.json"""
@@ -223,7 +230,7 @@ def get_scale_notes(root_note, intervals):
 
 def show_scale(controller, root_note, scale_name, intervals):
     """
-    Zobrazí stupnici na klaviatuře s barevným rozlišením stupňů
+    Zobrazí stupnici na klaviatuře - bílé klávesy jednou barvou, černé druhou
     
     Args:
         controller: LEDController instance
@@ -242,12 +249,27 @@ def show_scale(controller, root_note, scale_name, intervals):
     # Vytvoř slovník nota -> stupeň
     note_to_degree = {note: degree for note, degree in scale_notes}
     
-    # Zobraz na klaviatuře
+    # Barva pro root notu (červená) - jedna barva pro bílé i černé klávesy
+    ROOT_COLOR = (LED_INTENSITY, 0, 0, 0)  # Červená
+    
+    # Zobraz na klaviatuře podle zvoleného režimu
     for led_pos, note, is_white, octave in PIANO_KEY_MAP:
         if led_pos < 144:
             if note in note_to_degree:
                 degree = note_to_degree[note]
-                color = SCALE_DEGREE_COLORS.get(degree, (LED_INTENSITY, LED_INTENSITY, LED_INTENSITY, 0))
+                
+                if USE_KEY_COLOR_MODE:
+                    # Režim 1: Barvy podle typu klávesy (bílá/černá), root červeně
+                    if degree == 1:  # Root nota
+                        color = ROOT_COLOR
+                    elif is_white:
+                        color = WHITE_KEY_COLOR  # Bílá barva pro bílé klávesy
+                    else:
+                        color = BLACK_KEY_COLOR  # Zelená barva pro černé klávesy
+                else:
+                    # Režim 2: Barvy podle stupňů stupnice
+                    color = SCALE_DEGREE_COLORS.get(degree, (LED_INTENSITY, LED_INTENSITY, LED_INTENSITY, 0))
+                
                 controller.set_pixel(led_pos, *color)
     
     print("\n✓ Stupnice zobrazena:")
