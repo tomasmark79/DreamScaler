@@ -794,17 +794,99 @@ def print_menu():
     print("="*60)
 
 
+def execute_menu_choice(controller, choice):
+    """
+    Vykoná volbu z menu
+    
+    Args:
+        controller: LEDController instance
+        choice: volba z menu (string)
+    
+    Returns:
+        'exit' pro ukončení, None jinak
+    """
+    if choice == '1':
+        show_piano_keys(controller)
+        input("\nStiskněte Enter pro pokračování...")
+        controller.clear_all()
+    
+    elif choice == '2':
+        show_white_keys_only(controller)
+        input("\nStiskněte Enter pro pokračování...")
+        controller.clear_all()
+    
+    elif choice == '3':
+        show_black_keys_only(controller)
+        input("\nStiskněte Enter pro pokračování...")
+        controller.clear_all()
+    
+    elif choice == '4':
+        show_octaves(controller)
+        input("\nStiskněte Enter pro pokračování...")
+        controller.clear_all()
+    
+    elif choice == '5':
+        test_key_animation(controller)
+    
+    elif choice == '6':
+        print_piano_map()
+        input("\nStiskněte Enter pro pokračování...")
+    
+    elif choice == '7':
+        print("\nMažu všechny LED...")
+        controller.clear_all()
+        print("✓ Hotovo")
+    
+    elif choice == '10':
+        show_all_scales_menu(controller)
+    
+    elif choice == '11':
+        show_chord_progressions_menu(controller)
+    
+    elif choice == '12':
+        show_scale_selector_gui(controller)
+    
+    elif choice == '8':
+        print("\n⚠ MIDI monitoring - zatím neimplementováno")
+        print("Připraveno pro Arturia Keylab 49 MKII")
+    
+    elif choice == '9':
+        print("\n⚠ Live MIDI visualizace - zatím neimplementováno")
+        print("Připraveno pro Arturia Keylab 49 MKII")
+    
+    elif choice == '0':
+        print("\nKončím...")
+        controller.clear_all()
+        return 'exit'
+    
+    else:
+        print("\n✗ Neplatná volba")
+    
+    return None
+
+
 def main():
     """Hlavní funkce"""
     global _global_controller
     
     if len(sys.argv) < 2:
-        print("Použití: python piano.py <serial_port>")
+        print("Použití: python piano.py <serial_port> [volba_menu]")
         print("Příklad: python piano.py /dev/ttyUSB0")
         print("         python piano.py COM3")
+        print("         python piano.py COM5 12    # Spustí přímo GUI (volba 12)")
+        print("\nDostupné volby menu:")
+        print("  1  - Zobrazit všechny klávesy")
+        print("  2  - Pouze bílé klávesy")
+        print("  3  - Pouze černé klávesy")
+        print("  4  - Zobrazit oktávy")
+        print("  5  - Test animace")
+        print("  10 - Všechny stupnice")
+        print("  11 - Akordové postupy")
+        print("  12 - Grafický výběr stupnice (GUI)")
         sys.exit(1)
     
     port = sys.argv[1]
+    auto_choice = sys.argv[2] if len(sys.argv) > 2 else None
     
     try:
         print(f"Připojování k {port}...")
@@ -820,68 +902,21 @@ def main():
         print("✓ Připojeno k LED controlleru!")
         print(f"✓ Piano mapa načtena: {len(PIANO_KEY_MAP)} kláves")
         
+        # Pokud byl zadán parametr menu, spustit přímo
+        if auto_choice:
+            print(f"\n→ Automatické spuštění volby: {auto_choice}")
+            execute_menu_choice(controller, auto_choice)
+            return
+        
         # Hlavní smyčka
         while True:
             print_menu()
             choice = input("\nVaše volba: ").strip()
             
             try:
-                if choice == '1':
-                    show_piano_keys(controller)
-                    input("\nStiskněte Enter pro pokračování...")
-                    controller.clear_all()
-                
-                elif choice == '2':
-                    show_white_keys_only(controller)
-                    input("\nStiskněte Enter pro pokračování...")
-                    controller.clear_all()
-                
-                elif choice == '3':
-                    show_black_keys_only(controller)
-                    input("\nStiskněte Enter pro pokračování...")
-                    controller.clear_all()
-                
-                elif choice == '4':
-                    show_octaves(controller)
-                    input("\nStiskněte Enter pro pokračování...")
-                    controller.clear_all()
-                
-                elif choice == '5':
-                    test_key_animation(controller)
-                
-                elif choice == '6':
-                    print_piano_map()
-                    input("\nStiskněte Enter pro pokračování...")
-                
-                elif choice == '7':
-                    print("\nMažu všechny LED...")
-                    controller.clear_all()
-                    print("✓ Hotovo")
-                
-                elif choice == '10':
-                    show_all_scales_menu(controller)
-                
-                elif choice == '11':
-                    show_chord_progressions_menu(controller)
-                
-                elif choice == '12':
-                    show_scale_selector_gui(controller)
-                
-                elif choice == '8':
-                    print("\n⚠ MIDI monitoring - zatím neimplementováno")
-                    print("Připraveno pro Arturia Keylab 49 MKII")
-                
-                elif choice == '9':
-                    print("\n⚠ Live MIDI visualizace - zatím neimplementováno")
-                    print("Připraveno pro Arturia Keylab 49 MKII")
-                
-                elif choice == '0':
-                    print("\nKončím...")
-                    controller.clear_all()
+                result = execute_menu_choice(controller, choice)
+                if result == 'exit':
                     break
-                
-                else:
-                    print("\n✗ Neplatná volba")
             
             except KeyboardInterrupt:
                 # Toto by se nemělo stát díky signal handleru, ale pro jistotu
