@@ -2,6 +2,11 @@
 
 🎹 USB/Serial controller pro SK6812 RGBW LED pásky s podporou **Piano Mode** pro Arturia Keylab 49 MKII a vizualizaci 60+ hudebních stupnic.
 
+> 🌱 **Help Keep This Going**
+> Your support makes a real difference. If you value my work and want to help me continue creating, please consider making a donation.  
+> 💙 **Donate here:** [https://paypal.me/TomasMark](https://paypal.me/TomasMark)
+> Every contribution is truly appreciated ✨
+
 ## 🚀 Quick Start
 
 ```bash
