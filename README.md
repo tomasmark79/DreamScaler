@@ -109,6 +109,8 @@ with LEDController('/dev/ttyUSB0') as led:
 
 ## 🎹 Piano Mode
 
+![Scale Selector GUI](image.png)
+
 ```bash
 ./piano.py /dev/ttyUSB0
 ```
@@ -119,6 +121,7 @@ with LEDController('/dev/ttyUSB0') as led:
 - `4` - Oktávy (barevně)
 - `5` - Test animace
 - `10` - **60+ stupnic** (Durová, Aiolská, Pentatonické, Blues...)
+- `12` - **🖼️ Grafický výběr stupnice (GUI)**
 - `6` - Mapa kláves (C2-C6, 49 kláves)
 
 **V kódu:**
